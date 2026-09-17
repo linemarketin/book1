@@ -11,17 +11,17 @@
 
     <!-- Meta Pixel Code -->
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
 
-    fbq('init', '1371060818078535');
-    fbq('track', 'PageView');
+        fbq('init', '1371060818078535');
+        fbq('track', 'PageView');
     </script>
 
     <noscript>
@@ -102,7 +102,7 @@
 
         .book-box {
             border: 1px solid rgba(212, 175, 55, 0.25);
-            background: rgba(255,255,255,0.025);
+            background: rgba(255, 255, 255, 0.025);
             border-radius: 16px;
             padding: 20px;
             margin-bottom: 25px;
@@ -221,7 +221,6 @@
 <body>
 
 <div class="container">
-
     <div class="card">
 
         <div class="logo">TABO BOOKS</div>
@@ -281,17 +280,14 @@
         </div>
 
     </div>
-
 </div>
 
-
 <script>
-
     /*
-     * رابط تحميل الكتاب
+     * رابط تحميل الكتاب من Cloudflare R2
      */
     const DOWNLOAD_URL =
-        "https://drive.google.com/uc?export=download&id=1xqQ4LauIZsFnsEhBlKBOfV7AYt1Sb7LW";
+        "https://pub-434cf172695b4590b4557c66fef3ae43.r2.dev/al-million-first.pdf/%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D9%85%D9%84%D9%8A%D9%88%D9%86%20%D8%A7%D9%84%D8%A7%D9%88%D9%84.pdf";
 
 
     /*
@@ -312,19 +308,15 @@
      * دالة تتبع الشراء عبر Meta Pixel
      */
     function trackPurchase() {
-
         if (typeof fbq === "function") {
-
-            fbq('track', 'Purchase', {
+            fbq("track", "Purchase", {
                 value: 300,
-                currency: 'EGP',
+                currency: "EGP",
                 content_name:
-                    'كيفية صناعة المليون الأول قبل بلوغ الثلاثين',
-                content_type: 'product'
+                    "كيفية صناعة المليون الأول قبل بلوغ الثلاثين",
+                content_type: "product"
             });
-
         }
-
     }
 
 
@@ -332,9 +324,16 @@
      * دالة التحميل
      */
     function downloadBook() {
+        const link = document.createElement("a");
 
-        window.location.href = DOWNLOAD_URL;
+        link.href = DOWNLOAD_URL;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.download = "كتاب-المليون-الأول.pdf";
 
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
     }
 
 
@@ -346,7 +345,7 @@
 
 
     /*
-     * إذا لم يتم التحميل تلقائيًا من قبل
+     * إذا لم يتم التحميل التلقائي من قبل
      */
     if (!autoDownloaded) {
 
@@ -409,7 +408,6 @@
         /*
          * التحميل التلقائي تم استخدامه بالفعل
          */
-
         loadingArea.style.display = "none";
         manualBox.style.display = "block";
 
@@ -469,7 +467,6 @@
         downloadBook();
 
     });
-
 </script>
 
 </body>
